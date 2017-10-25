@@ -18,7 +18,12 @@ if __name__ == '__main__':
     ip = str(get_ip2('wlan0')).split('.')
     while True:
         t = ip[3] if t == ip[2] else ip[2]
-        SAKS.digital_display.show(str(t))
+        str = ''
+        if len(str(t)) < 4:
+            for i in range(4 - len(str(t))):
+                str += '0'
+        str += str(t)
+        SAKS.digital_display.show(str)
         if t > 50:
             pass
             # SAKS.buzzer.beepAction(0.02,0.02,30)
