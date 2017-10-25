@@ -13,11 +13,16 @@ SAKS = SAKSHAT()
 def get_ip2(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     return socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', ifname[:15]))[20:24])
-t = 0
+
 if __name__ == '__main__':
     ip = str(get_ip2('wlan0')).split('.')
+    t = 0
+    index = 0
     while True:
-        t = ip[3] if t == ip[2] else ip[2]
+        if index > len(ip) - 1:
+            index = 0
+        t = ip[index]
+        index++
         t1 = ''
         if len(str(t)) < 4:
             for i in range(4 - len(str(t))):
