@@ -31,9 +31,12 @@ def writeByte(data):
     GPIO.output(STCP, GPIO.LOW)
     GPIO.output(STCP, GPIO.HIGH)
 
+count = 30
+
 try:
     init()
-    while True:
+    while not count:
+        count -= 1
         #以下一组8个编码由一组二进制转换而成：
         #00000001,00000010,00000100,00001000,00010000,00100000,01000000,10000000
         #分别对应8个LED点亮状态
