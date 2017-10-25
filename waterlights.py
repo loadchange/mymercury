@@ -34,7 +34,6 @@ def writeByte(data):
 count = 30
 
 try:
-    GPIO.cleanup()
     init()
     while not count:
         count -= 1
