@@ -22,7 +22,7 @@ if __name__ == '__main__':
         if index > len(ip) - 1:
             index = 0
         t = ip[index]
-        index++
+        index += 1
         t1 = ''
         if len(str(t)) < 4:
             for i in range(4 - len(str(t))):
