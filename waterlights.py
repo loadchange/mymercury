@@ -46,6 +46,9 @@ try:
         #LED组全开
         #writeByte(0xff)
         #time.sleep(0.1)
+    else:
+        writeByte(0x00)
+        GPIO.cleanup()
 
 except KeyboardInterrupt:
     print "except"
