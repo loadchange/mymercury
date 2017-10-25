@@ -15,7 +15,6 @@ def get_ip2(ifname):
     return socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', ifname[:15]))[20:24])
 
 if __name__ == '__main__':
-    get_ip()
     print get_ip2('wlan0')
     print get_ip2('lo')
     while True:
