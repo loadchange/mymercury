@@ -13,15 +13,15 @@ SAKS = SAKSHAT()
 def get_ip2(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     return socket.inet_ntoa(fcntl.ioctl(s.fileno(), 0x8915, struct.pack('256s', ifname[:15]))[20:24])
-
+t = 0
 if __name__ == '__main__':
-    print get_ip2('wlan0')
-    print get_ip2('lo')
+    ip = str(get_ip2('wlan0')).split('.')
     while True:
-        t = 80
-        SAKS.digital_display.show("%.2f" % t)
+        t = ip[3] if t == ip[2] else ip[2]
+        SAKS.digital_display.show(int(t))
         if t > 50:
-            SAKS.buzzer.beepAction(0.02,0.02,30)
-        time.sleep(1)
+            pass
+            # SAKS.buzzer.beepAction(0.02,0.02,30)
+        time.sleep(2)
 
     input("Enter any keys to exit...")
