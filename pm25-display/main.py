@@ -31,7 +31,7 @@ cityid 和 key 需要根据实际情况替换
 参考 http://www.heweather.com/documents/api
 http://www.heweather.com/documents/cn-city-list
 '''
-weather_url = 'https://api.heweather.com/x3/weather?cityid=CN101010400&key=e2dfc339a09c4e09b1e389e9578af294'
+weather_url = 'https://free-api.heweather.com/x3/weather?cityid=CN101010400&key=e2dfc339a09c4e09b1e389e9578af294'
 
 def get_pm25():
     global weather_url
