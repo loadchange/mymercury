@@ -40,7 +40,7 @@ def get_pm25():
     content = resp.read()
     if(content):
         weatherJSON = json.JSONDecoder().decode(content)
-        #print(content)
+        print(content)
         try:
             if weatherJSON['HeWeather data service 3.0'][0]['status'] == "ok":
                 if weatherJSON['HeWeather data service 3.0'][0].has_key('aqi'):
