@@ -18,21 +18,22 @@
 # tutorials url: http://shumeipai.nxez.com/2015/10/11/saks-diy-tutorials-digital-clock.html
 
 __author__ = 'Spoony'
-__license__  = 'Copyright (c) 2015 NXEZ.COM'
+__license__ = 'Copyright (c) 2015 NXEZ.COM'
 
 from sakshat import SAKSHAT
 import time
 
-#Declare the SAKS Board
+# Declare the SAKS Board
 SAKS = SAKSHAT()
 
 __dp = True
 __alarm_beep_status = False
 __alarm_beep_times = 0
 # 在这里设定闹钟定时时间
-__alarm_time = "18:10:00"
+__alarm_time = "22:09:00"
 
-#在检测到轻触开关触发时自动执行此函数
+
+# 在检测到轻触开关触发时自动执行此函数
 def tact_event_handler(pin, status):
     '''
     called while the status of tacts changed
@@ -48,8 +49,9 @@ def tact_event_handler(pin, status):
     SAKS.buzzer.off()
     SAKS.ledrow.off_for_index(6)
 
+
 if __name__ == "__main__":
-    #设定轻触开关回调函数
+    # 设定轻触开关回调函数
     SAKS.tact_event_handler = tact_event_handler
     SAKS.buzzer.off()
     SAKS.ledrow.off_for_index(6)
@@ -59,8 +61,8 @@ if __name__ == "__main__":
         h = t.tm_hour
         m = t.tm_min
         s = t.tm_sec
-        w = time.strftime('%w',t)
-        #print h,m,s,w
+        w = time.strftime('%w', t)
+        # print h,m,s,w
         print "%02d:%02d:%02d" % (h, m, s)
 
         if ("%02d:%02d:%02d" % (h, m, s)) == __alarm_time:
