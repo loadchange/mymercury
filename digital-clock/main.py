@@ -30,7 +30,7 @@ __dp = True
 __alarm_beep_status = False
 __alarm_beep_times = 0
 # 在这里设定闹钟定时时间
-__alarm_time = "22:11:00"
+__alarm_time = "07:10:00"
 
 
 # 在检测到轻触开关触发时自动执行此函数
