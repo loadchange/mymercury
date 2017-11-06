@@ -36,7 +36,8 @@ def main():
         autoescape=None
     )
     handlers = [
-        (r"/", IndexHandler)
+        (r"/", IndexHandler),
+        (r"/clock", clock.DefaultHandler)
     ]
 
     application = Application(handlers, **settings)
