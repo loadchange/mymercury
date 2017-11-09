@@ -78,9 +78,12 @@ if __name__ == "__main__":
             __alarm_beep_times = 0
 
         leds = s % 10
+        if leds >= 7:
+            SAKS.ledrow.off()
+        else:
+            SAKS.ledrow.on_for_index(leds)
+
         if __dp:
-            for i in range(8 if leds >= 8 else leds):
-                SAKS.ledrow.on_for_index(i)
             # 数码管显示小时和分，最后一位的小点每秒闪烁一次
             SAKS.digital_display.show(("%02d%02d." % (h, m)))
             # 判断是否应该响起闹钟
@@ -94,7 +97,6 @@ if __name__ == "__main__":
                     __alarm_beep_status = False
                     __alarm_beep_times = 0
         else:
-            SAKS.ledrow.off()
             SAKS.digital_display.show(("%02d%02d" % (h, m)))
             if __alarm_beep_status:
                 SAKS.buzzer.off()
