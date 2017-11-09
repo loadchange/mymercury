@@ -115,7 +115,7 @@ if __name__ == "__main__":
             qlty = weather['aqi']['city']['qlty']  # 良
             suggestion = ''
             for key in ['air', 'comf', 'cw', 'drsg', 'flu', 'sport', 'trav', 'uv']:
-                suggestion += weather['suggestion'][key]
+                suggestion += weather['suggestion'][key]['txt']
             print pm10, pm25, qlty, suggestion
 
         if __dp:
