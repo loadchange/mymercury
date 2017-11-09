@@ -110,9 +110,9 @@ if __name__ == "__main__":
         if mm == 20:
             mm = 1
             weather = getWeatherData()
-            pm10 = weather['api']['city']['pm10']  # 67
-            pm25 = weather['api']['city']['pm25']  # 5
-            qlty = weather['api']['city']['qlty']  # 良
+            pm10 = weather['aqi']['city']['pm10']  # 67
+            pm25 = weather['aqi']['city']['pm25']  # 5
+            qlty = weather['aqi']['city']['qlty']  # 良
             suggestion = ''
             for key in ['air', 'comf', 'cw', 'drsg', 'flu', 'sport', 'trav', 'uv']:
                 suggestion += weather['suggestion'][key]
