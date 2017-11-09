@@ -78,7 +78,7 @@ if __name__ == "__main__":
             __alarm_beep_times = 0
 
         leds = s % 10
-        if leds >= 7:
+        if leds >= 8:
             SAKS.ledrow.off()
         else:
             SAKS.ledrow.on_for_index(leds)
