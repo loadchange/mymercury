@@ -64,7 +64,7 @@ if __name__ == "__main__":
         w = time.strftime('%w', t)
         # print h,m,s,w
         print "%02d:%02d:%02d" % (h, m, s)
-
+        SAKS.buzzer.off()
         if s >= 55:
             SAKS.buzzer.on()
 
