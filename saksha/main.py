@@ -79,6 +79,7 @@ if __name__ == "__main__":
 
         leds = s % 10
         if 21 < h < 7:
+            print h
             if leds >= 8:
                 SAKS.ledrow.off()
             else:
