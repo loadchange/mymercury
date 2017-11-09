@@ -43,6 +43,7 @@ def tact_event_handler(pin, status):
     :param status: current status
     :return: void
     '''
+    print pin, status
     global __alarm_beep_status
     global __alarm_beep_times
     # 停止闹钟响铃（按下任何轻触开关均可触发）
