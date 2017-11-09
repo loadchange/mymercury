@@ -70,6 +70,8 @@ if __name__ == "__main__":
                 SAKS.buzzer.on()
             else:
                 SAKS.buzzer.off()
+        else:
+            SAKS.buzzer.off()
 
         if ("%02d:%02d:%02d" % (h, m, s)) == __alarm_time:
             __alarm_beep_status = True
@@ -85,6 +87,7 @@ if __name__ == "__main__":
                 __alarm_beep_times = __alarm_beep_times + 1
                 # 30次没按下停止键则自动停止闹铃
                 if __alarm_beep_times > 30:
+                    SAKS.buzzer.off()
                     __alarm_beep_status = False
                     __alarm_beep_times = 0
         else:
