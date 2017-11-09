@@ -65,6 +65,9 @@ if __name__ == "__main__":
         # print h,m,s,w
         print "%02d:%02d:%02d" % (h, m, s)
 
+        if s >= 55:
+            SAKS.buzzer.on()
+
         if ("%02d:%02d:%02d" % (h, m, s)) == __alarm_time:
             __alarm_beep_status = True
             __alarm_beep_times = 0
