@@ -73,6 +73,9 @@ if __name__ == "__main__":
         else:
             SAKS.buzzer.off()
 
+        SAKS.ledrow.off()
+        SAKS.ledrow.on_for_index(7)
+
         if ("%02d:%02d:%02d" % (h, m, s)) == __alarm_time:
             __alarm_beep_status = True
             __alarm_beep_times = 0
