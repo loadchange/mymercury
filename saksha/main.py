@@ -108,16 +108,16 @@ if __name__ == "__main__":
         # else:
         #     SAKS.ledrow.off()
 
-        if mm == 20:
-            mm = 1
-            weather = getWeatherData()
-            pm10 = weather['aqi']['city']['pm10']  # 67
-            pm25 = weather['aqi']['city']['pm25']  # 5
-            qlty = weather['aqi']['city']['qlty']  # 良
-            suggestion = ''
-            for key in ['air', 'comf', 'cw', 'drsg', 'flu', 'sport', 'trav', 'uv']:
-                suggestion += weather['suggestion'][key]['txt']
-            print pm10, pm25, qlty, suggestion
+        # if mm == 20:
+        #     mm = 1
+        #     weather = getWeatherData()
+        #     pm10 = weather['aqi']['city']['pm10']  # 67
+        #     pm25 = weather['aqi']['city']['pm25']  # 5
+        #     qlty = weather['aqi']['city']['qlty']  # 良
+        #     suggestion = ''
+        #     for key in ['air', 'comf', 'cw', 'drsg', 'flu', 'sport', 'trav', 'uv']:
+        #         suggestion += weather['suggestion'][key]['txt']
+        #     print pm10, pm25, qlty, suggestion
 
         if __dp:
             # 数码管显示小时和分，最后一位的小点每秒闪烁一次
