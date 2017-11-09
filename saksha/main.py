@@ -80,7 +80,7 @@ if __name__ == "__main__":
         leds = s % 10
         if __dp:
             for i in range(7 if leds >= 7 else leds):
-                SAKS.ledrow.on_for_index(i)
+                SAKS.ledrow.on_for_index(i + 1)
             # 数码管显示小时和分，最后一位的小点每秒闪烁一次
             SAKS.digital_display.show(("%02d%02d." % (h, m)))
             # 判断是否应该响起闹钟
