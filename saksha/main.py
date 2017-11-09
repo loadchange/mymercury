@@ -22,6 +22,8 @@ __license__ = 'Copyright (c) 2015 NXEZ.COM'
 
 from sakshat import SAKSHAT
 import time
+import urllib2
+import json
 
 # Declare the SAKS Board
 SAKS = SAKSHAT()
@@ -50,11 +52,30 @@ def tact_event_handler(pin, status):
     SAKS.ledrow.off_for_index(6)
 
 
+def getWeatherData():
+    weather_url = 'https://free-api.heweather.com/x3/weather?cityid=CN101010400&key=e2dfc339a09c4e09b1e389e9578af294'
+    req = urllib2.Request(weather_url)
+    resp = urllib2.urlopen(req)
+    content = resp.read()
+    if content:
+        weatherJSON = json.JSONDecoder().decode(content)
+        print(content)
+        try:
+            if weatherJSON['HeWeather data service 3.0'][0]['status'] == "ok":
+                return weatherJSON['HeWeather data service 3.0'][0]
+            else:
+                return -1
+        except Exception as e:
+            print e.message
+            return -1
+
+
 if __name__ == "__main__":
     # 设定轻触开关回调函数
     SAKS.tact_event_handler = tact_event_handler
     SAKS.buzzer.off()
     SAKS.ledrow.off_for_index(6)
+    mm = 20
     while True:
         # 以下代码获取系统时间、时、分、秒、星期的数值
         t = time.localtime()
@@ -77,14 +98,25 @@ if __name__ == "__main__":
             __alarm_beep_status = True
             __alarm_beep_times = 0
 
-        leds = s % 10
-        if h > 21 or (0 < h < 7):
-            if leds >= 8:
-                SAKS.ledrow.off()
-            else:
-                SAKS.ledrow.on_for_index(leds)
-        else:
-            SAKS.ledrow.off()
+        # leds = s % 10
+        # if h > 21 or (0 < h < 7):
+        #     if leds >= 8:
+        #         SAKS.ledrow.off()
+        #     else:
+        #         SAKS.ledrow.on_for_index(leds)
+        # else:
+        #     SAKS.ledrow.off()
+
+        if mm == 20:
+            mm = 1
+            weather = getWeatherData()
+            pm10 = weather['api']['city']['pm10']  # 67
+            pm25 = weather['api']['city']['pm25']  # 5
+            qlty = weather['api']['city']['qlty']  # 良
+            suggestion = ''
+            for key in ['air', 'comf', 'cw', 'drsg', 'flu', 'sport', 'trav', 'uv']:
+                suggestion += weather['suggestion'][key]
+            print pm10, pm25, qlty, suggestion
 
         if __dp:
             # 数码管显示小时和分，最后一位的小点每秒闪烁一次
