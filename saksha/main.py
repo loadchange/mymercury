@@ -73,11 +73,10 @@ if __name__ == "__main__":
         if 21 >= h >= 7:
             # if 21 >= h >= 7 and m == 59 and s >= 58:
             path = "%s/saksha/tell-time/%d.mp3" % (os.path.abspath('.'), m % 10)
-            print path
             pygame.mixer.init()
             track = pygame.mixer.music.load(path)
             pygame.mixer.music.play()
-            pygame.mixer.quit()
+            # pygame.mixer.quit()
 
         if ("%02d:%02d:%02d" % (h, m, s)) == __alarm_time:
             __alarm_beep_status = True
