@@ -1,29 +1,11 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#
-# Copyright (c) 2015 NXEZ.COM.
-# http://www.nxez.com
-#
-# Licensed under the GNU General Public License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#   http://www.gnu.org/licenses/gpl-2.0.html
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-# tutorials url: http://shumeipai.nxez.com/2015/10/11/saks-diy-tutorials-digital-clock.html
-
-__author__ = 'Spoony'
-__license__ = 'Copyright (c) 2015 NXEZ.COM'
 
 from sakshat import SAKSHAT
 import time
 import urllib2
 import json
+import pygame
+import os
 
 # Declare the SAKS Board
 SAKS = SAKSHAT()
@@ -88,12 +70,10 @@ if __name__ == "__main__":
         print "%02d:%02d:%02d" % (h, m, s)
 
         if 21 >= h >= 7 and m == 59 and s >= 55:
-            if __dp:
-                SAKS.buzzer.on()
-            else:
-                SAKS.buzzer.off()
-        else:
-            SAKS.buzzer.off()
+            pygame.mixer.init()
+            path = os.path.abspath('.')
+            print path
+            # track = pygame.mixer.music.load("")
 
         if ("%02d:%02d:%02d" % (h, m, s)) == __alarm_time:
             __alarm_beep_status = True
