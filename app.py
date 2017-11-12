@@ -44,6 +44,7 @@ def main():
     application = Application(handlers, **settings)
     application.listen(options.port, xheaders=True)
     pi = rpi.RasPi()
+    pi.init()
     ioloop.PeriodicCallback(pi.run, 500).start()
     app_log.warning("my pi start at port: %s" % options.port)
     IOLoop.instance().start()
