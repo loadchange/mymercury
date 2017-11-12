@@ -10,9 +10,10 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from tornado.gen import coroutine, Task
 from tornado.web import asynchronous
-from controller.base import BaseHandler
+from tornado.util import raise_exc_info
 
-class RasPi(BaseHandler):
+
+class RasPi():
     executor = ThreadPoolExecutor(2)
 
     SAKS = None
@@ -125,3 +126,15 @@ class RasPi(BaseHandler):
                 self.SAKS.ledrow.on_for_index(leds)
         else:
             self.SAKS.ledrow.off()
+
+    def _stack_context_handle_exception(self, type, value, traceback):
+        try:
+            # For historical reasons _handle_request_exception only takes
+            # the exception value instead of the full triple,
+            # so re-raise the exception to ensure that it's in
+            # sys.exc_info()
+            raise_exc_info((type, value, traceback))
+        except Exception as e:
+            print e.message
+            return None
+        return True
