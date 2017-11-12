@@ -80,7 +80,7 @@ class RasPi():
         return {'localtime': t, 'hour': h, 'min': m, 'sec': s, 'strftime': w}
 
     def playTellTime(self, hours):
-        path = "%s/saksha/tell-time/%d.mp3" % (os.path.abspath('.'), hours)
+        path = "%s/rpi/tell-time/%d.mp3" % (os.path.abspath('.'), hours)
         pygame.mixer.init()
         pygame.mixer.music.set_volume(1.0)
         clip = pygame.mixer.music.load(path)
@@ -94,7 +94,7 @@ class RasPi():
         hour = time.get('hour')
         min = time.get('min')
         sec = time.get('sec')
-        if 21 >= hour >= 7 and min == 0 and not self.tellTime:
+        if 23 >= hour >= 7 and min == 42 and not self.tellTime:
             self.tellTime = True
             self.playTellTime(hour)
 
