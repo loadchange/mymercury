@@ -10,11 +10,11 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from tornado.gen import coroutine, Task
 from tornado.web import asynchronous
+from controller.base import BaseHandler
 
-
-class RasPi():
+class RasPi(BaseHandler):
     executor = ThreadPoolExecutor(2)
-    
+
     SAKS = None
     __dp = True
     __alarm_beep_status = False
