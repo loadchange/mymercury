@@ -85,6 +85,9 @@ class RasPi():
         pygame.mixer.music.set_volume(1.0)
         clip = pygame.mixer.music.load(path)
         pygame.mixer.music.play()
+        print '='*99
+        print clip.seconds()
+        print '=' * 99
         time.sleep(clip.seconds())
         pygame.mixer.quit()
         self.tellTime = False
@@ -94,7 +97,7 @@ class RasPi():
         hour = time.get('hour')
         min = time.get('min')
         sec = time.get('sec')
-        if 23 >= hour >= 7 and min == 42 and not self.tellTime:
+        if 23 >= hour >= 7 and min % 2 and not self.tellTime:
             self.tellTime = True
             self.playTellTime(hour)
 
