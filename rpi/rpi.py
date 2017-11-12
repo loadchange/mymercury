@@ -83,12 +83,9 @@ class RasPi():
         path = "%s/rpi/tell-time/%d.mp3" % (os.path.abspath('.'), hours)
         pygame.mixer.init()
         pygame.mixer.music.set_volume(1.0)
-        clip = pygame.mixer.music.load(path)
+        pygame.mixer.music.load(path)
         pygame.mixer.music.play()
-        print '='*99
-        print clip.seconds()
-        print '=' * 99
-        time.sleep(clip.seconds())
+        time.sleep(4)
         pygame.mixer.quit()
         self.tellTime = False
 
