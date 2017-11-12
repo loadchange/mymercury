@@ -94,6 +94,8 @@ class RasPi():
         sec = time.get('sec')
         if 23 >= hour >= 7 and min % 2 and self.tellTime != hour:
             self.playTellTime(hour)
+        if self.tellTime == hour and sec >= 4:
+            pygame.mixer.quit()
 
         if ("%02d:%02d:%02d" % (hour, min, sec)) == self.__alarm_time:
             self.__alarm_beep_status = True
