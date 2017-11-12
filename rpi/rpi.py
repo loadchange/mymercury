@@ -74,6 +74,10 @@ class RasPi():
         # print "%02d:%02d:%02d" % (h, m, s)
         if self.__dp:
             self.SAKS.digital_display.show(("%02d%02d." % (h, m)))
+            if self.__alarm_beep_status:
+                self.SAKS.buzzer.on()
+                self.SAKS.ledrow.on_for_index(6)
+                self.__alarm_beep_times += 1
         else:
             self.SAKS.digital_display.show(("%02d%02d" % (h, m)))
             if self.__alarm_beep_status:
@@ -104,16 +108,11 @@ class RasPi():
             self.__alarm_beep_status = True
             self.__alarm_beep_times = 0
 
-        if self.__alarm_beep_status:
-            self.SAKS.buzzer.on()
-            self.SAKS.ledrow.on_for_index(6)
-            self.__alarm_beep_times += 1
-            # 30次没按下停止键则自动停止闹铃
-            if self.__alarm_beep_times > 30:
-                self.SAKS.buzzer.off()
-                self.SAKS.ledrow.off_for_index(6)
-                self.__alarm_beep_status = False
-                self.__alarm_beep_times = 0
+        if self.__alarm_beep_status and self.__alarm_beep_times > 30:
+            self.SAKS.buzzer.off()
+            self.SAKS.ledrow.off_for_index(6)
+            self.__alarm_beep_status = False
+            self.__alarm_beep_times = 0
 
         leds = sec % 10
         if hour > 21 or (-1 < hour < 7):
