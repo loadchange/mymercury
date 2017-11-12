@@ -20,7 +20,7 @@ class RasPi():
     __dp = True
     __alarm_beep_status = False
     __alarm_beep_times = 0
-    __alarm_time = "07:10:00"  # 在这里设定闹钟定时时间
+    __alarm_time = "07:20:00"  # 在这里设定闹钟定时时间
 
     tellTime = -1
 
@@ -76,6 +76,9 @@ class RasPi():
             self.SAKS.digital_display.show(("%02d%02d." % (h, m)))
         else:
             self.SAKS.digital_display.show(("%02d%02d" % (h, m)))
+            if self.__alarm_beep_status:
+                self.SAKS.buzzer.off()
+                self.SAKS.ledrow.off_for_index(6)
         self.__dp = not self.__dp
         return {'localtime': t, 'hour': h, 'min': m, 'sec': s, 'strftime': w}
 
