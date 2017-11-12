@@ -70,7 +70,7 @@ if __name__ == "__main__":
         # print h,m,s,w
         print "%02d:%02d:%02d" % (h, m, s)
 
-        if 21 >= h >= 7:
+        if 21 >= h >= 7 and m % 2:
             # if 21 >= h >= 7 and m == 59 and s >= 58:
             path = "%s/saksha/tell-time/%d.mp3" % (os.path.abspath('.'), m % 10)
             pygame.mixer.init()
