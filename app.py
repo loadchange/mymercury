@@ -7,8 +7,9 @@ import os
 from tornado.ioloop import IOLoop
 from tornado.log import app_log
 from tornado.options import define, options, parse_command_line
-from tornado.web import Application, RequestHandler
+from tornado.web import ioloop, Application, RequestHandler
 from controller import clock
+from rpi import rpi
 
 define("port", default=8050, type=int, help="server listen port")
 define("debug", default=True, type=bool, help="server run mode")
@@ -42,6 +43,8 @@ def main():
 
     application = Application(handlers, **settings)
     application.listen(options.port, xheaders=True)
+    pi = rpi.RasPi()
+    ioloop.PeriodicCallback(pi.run, 500).start()
     app_log.warning("my pi start at port: %s" % options.port)
     IOLoop.instance().start()
 
