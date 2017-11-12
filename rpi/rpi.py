@@ -22,7 +22,7 @@ class RasPi():
     __alarm_beep_times = 0
     __alarm_time = "07:10:00"  # 在这里设定闹钟定时时间
 
-    tellTime = False
+    tellTime = -1
 
     def init(self):
         self.SAKS = SAKSHAT()
@@ -85,17 +85,14 @@ class RasPi():
         pygame.mixer.music.set_volume(1.0)
         pygame.mixer.music.load(path)
         pygame.mixer.music.play()
-        time.sleep(4)
-        pygame.mixer.quit()
-        self.tellTime = False
+        self.tellTime = hours
 
     def run(self):
         time = self.showTime()
         hour = time.get('hour')
         min = time.get('min')
         sec = time.get('sec')
-        if 23 >= hour >= 7 and min % 2 and not self.tellTime:
-            self.tellTime = True
+        if 23 >= hour >= 7 and min % 2 and self.tellTime != hour:
             self.playTellTime(hour)
 
         if ("%02d:%02d:%02d" % (hour, min, sec)) == self.__alarm_time:
