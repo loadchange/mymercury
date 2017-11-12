@@ -11,6 +11,15 @@ from tornado.web import Application, RequestHandler
 from controller import clock
 from rpi import rpi
 
+pi = rpi.RasPi()
+pi.init()
+
+
+def f5():
+    global pi
+    pi.run()
+
+
 define("port", default=8050, type=int, help="server listen port")
 define("debug", default=True, type=bool, help="server run mode")
 parse_command_line()
@@ -43,9 +52,8 @@ def main():
 
     application = Application(handlers, **settings)
     application.listen(options.port, xheaders=True)
-    pi = rpi.RasPi()
-    pi.init()
-    ioloop.PeriodicCallback(pi.run, 500).start()
+
+    ioloop.PeriodicCallback(f5, 500).start()
     app_log.warning("my pi start at port: %s" % options.port)
     ioloop.IOLoop.instance().start()
 
