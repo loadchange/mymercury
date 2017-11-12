@@ -4,10 +4,10 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf8")
 import os
-from tornado.ioloop import IOLoop
+from tornado import ioloop
 from tornado.log import app_log
 from tornado.options import define, options, parse_command_line
-from tornado.web import ioloop, Application, RequestHandler
+from tornado.web import Application, RequestHandler
 from controller import clock
 from rpi import rpi
 
@@ -47,7 +47,7 @@ def main():
     pi.init()
     ioloop.PeriodicCallback(pi.run, 500).start()
     app_log.warning("my pi start at port: %s" % options.port)
-    IOLoop.instance().start()
+    ioloop.IOLoop.instance().start()
 
 
 if __name__ == '__main__':
