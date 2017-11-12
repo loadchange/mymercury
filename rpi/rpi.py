@@ -81,7 +81,7 @@ class RasPi():
 
     def playTellTime(self, hours):
         path = "%s/rpi/tell-time/%d.mp3" % (os.path.abspath('.'), hours)
-        pygame.mixer.init()
+        pygame.mixer.init(frequency=15500, size=-16, channels=4)
         pygame.mixer.music.set_volume(1.0)
         pygame.mixer.music.load(path)
         pygame.mixer.music.play()
