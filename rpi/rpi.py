@@ -40,7 +40,6 @@ class RasPi():
         self.SAKS.buzzer.off()
         self.SAKS.ledrow.off_for_index(6)
 
-    @coroutine
     def getWeatherData(self):
         weather_url = 'https://free-api.heweather.com/x3/weather?cityid=CN101010400&key=e2dfc339a09c4e09b1e389e9578af294'
         req = urllib2.Request(weather_url)
@@ -65,7 +64,6 @@ class RasPi():
                 print e.message
                 return None
 
-    @coroutine
     def showTime(self):
         t = time.localtime()
         h = t.tm_hour
@@ -81,7 +79,6 @@ class RasPi():
         self.__dp = not self.__dp
         return {'localtime': t, 'hour': h, 'min': m, 'sec': s, 'strftime': w}
 
-    @coroutine
     def playTellTime(self, hours):
         path = "%s/saksha/tell-time/%d.mp3" % (os.path.abspath('.'), hours)
         pygame.mixer.init()
@@ -92,16 +89,14 @@ class RasPi():
         pygame.mixer.quit()
         self.tellTime = False
 
-    @coroutine
-    @asynchronous
     def run(self):
-        time = yield Task(self.showTime)
+        time = self.showTime()
         hour = time.get('hour')
         min = time.get('min')
         sec = time.get('sec')
         if 21 >= hour >= 7 and min == 0 and not self.tellTime:
             self.tellTime = True
-            yield Task(self.playTellTime, time.get('hour'))
+            self.playTellTime(hour)
 
         if ("%02d:%02d:%02d" % (hour, min, sec)) == self.__alarm_time:
             self.__alarm_beep_status = True
