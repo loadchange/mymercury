@@ -74,6 +74,7 @@ if __name__ == "__main__":
         print path
 
         if 21 >= h >= 7 and m == 59 and s >= 55:
+            pass
             # pygame.mixer.init()
             # track = pygame.mixer.music.load("")
 
