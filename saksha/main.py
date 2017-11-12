@@ -70,10 +70,11 @@ if __name__ == "__main__":
         # print h,m,s,w
         print "%02d:%02d:%02d" % (h, m, s)
 
+        path = os.path.abspath('.')
+        print path
+
         if 21 >= h >= 7 and m == 59 and s >= 55:
-            pygame.mixer.init()
-            path = os.path.abspath('.')
-            print path
+            # pygame.mixer.init()
             # track = pygame.mixer.music.load("")
 
         if ("%02d:%02d:%02d" % (h, m, s)) == __alarm_time:
