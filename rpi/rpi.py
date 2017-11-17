@@ -112,6 +112,7 @@ class RasPi():
             self.__alarm_beep_times = 0
 
         if hour > 21 or (-1 < hour < 7):
+            self.SAKS.ledrow.off()
             [self.SAKS.ledrow.on_for_index(leds) for leds in range(sec % 8)]
         else:
             self.SAKS.ledrow.off()
