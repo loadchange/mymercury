@@ -66,12 +66,11 @@ class RasPi():
                 return None
 
     def showLed(self, sec):
-        global __ldp
-        ledIndex = sec % 8
-        if __ldp:
-            __ldp = ledIndex > 0
-            ledIndex = ledIndex if ledIndex else 8
+        ledIndex = sec % 9
+        if ledIndex:
             self.SAKS.ledrow.on_for_index(ledIndex)
+        else:
+            self.SAKS.ledrow.off()
 
     def showTime(self):
         t = time.localtime()
