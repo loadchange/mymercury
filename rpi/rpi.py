@@ -17,6 +17,7 @@ class RasPi():
     executor = ThreadPoolExecutor(2)
 
     SAKS = None
+    __ldp = True
     __dp = True
     __alarm_beep_status = False
     __alarm_beep_times = 0
@@ -63,6 +64,14 @@ class RasPi():
             except Exception as e:
                 print e.message
                 return None
+
+    def showLed(self, sec):
+        global __ldp
+        ledIndex = sec % 8
+        if __ldp:
+            __ldp = ledIndex > 0
+            ledIndex = ledIndex if ledIndex else 8
+            self.SAKS.ledrow.on_for_index(ledIndex)
 
     def showTime(self):
         t = time.localtime()
