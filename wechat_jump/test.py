@@ -5,10 +5,10 @@ import time
 # BOARD编号方式，基于插座引脚编号
 GPIO.setmode(GPIO.BCM)
 # 输出模式
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(17, GPIO.OUT)
 
 while True:
-    GPIO.output(12, GPIO.HIGH)
+    GPIO.output(17, GPIO.HIGH)
     time.sleep(1)
-    GPIO.output(12, GPIO.LOW)
+    GPIO.output(17, GPIO.LOW)
     time.sleep(1)
