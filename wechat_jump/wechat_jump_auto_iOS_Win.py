@@ -27,7 +27,7 @@ press_coefficient = 2.43  # 长按的时间系数，请自己根据实际情况�
 piece_base_height_1_2 = 10  # 二分之一的棋子底座高度，可能要调节
 piece_body_width = 46  # 棋子的宽度，比截图中量到的稍微大一点比较安全，可能要调节
 
-ip_addr = '192.168.199.181'  # ip地址设置
+ip_addr = '192.168.31.151'  # ip地址设置
 
 screenshot_backup_dir = 'screenshot_backups/'
 if not os.path.isdir(screenshot_backup_dir):
