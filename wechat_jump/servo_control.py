@@ -4,7 +4,7 @@ import socket
 import RPi.GPIO as gpio
 import atexit
 
-servopin = 18
+servopin = 17
 atexit.register(gpio.cleanup)
 gpio.setmode(gpio.BCM)
 gpio.setup(servopin, gpio.OUT, initial=False)
