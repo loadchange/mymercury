@@ -24,7 +24,8 @@ import RPi.GPIO as GPIO
 from sakspins import SAKSPins as PINS
 import entities
 
-class SAKSHAT(object):
+class saksha
+T(object):
     '''
     SAKS HAT class, some useful function are declared.
     '''
