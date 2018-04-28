@@ -112,9 +112,9 @@ class RasPi():
         if self.tellTime == hour and min == 0 and sec >= 4:
             pygame.mixer.quit()
 
-        if ("%02d:%02d:%02d" % (hour, min, sec)) == self.__alarm_time:
-            self.__alarm_beep_status = True
-            self.__alarm_beep_times = 0
+        # if ("%02d:%02d:%02d" % (hour, min, sec)) == self.__alarm_time:
+        #     self.__alarm_beep_status = True
+        #     self.__alarm_beep_times = 0
 
         if self.__alarm_beep_status and self.__alarm_beep_times > 30:
             self.SAKS.buzzer.off()
