@@ -2,4 +2,4 @@
 
 git pull origin master
 
-sudo supervisorctl restart tornados:tornado-0
+sudo supervisorctl restart tornado-1
