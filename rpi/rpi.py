@@ -21,7 +21,7 @@ class RasPi():
     __dp = True
     __alarm_beep_status = False
     __alarm_beep_times = 0
-    __alarm_time = "07:10:00"  # 在这里设定闹钟定时时间
+    __alarm_time = "08:00:00"  # 在这里设定闹钟定时时间
 
     tellTime = -1
 
@@ -41,29 +41,6 @@ class RasPi():
         self.SAKS.buzzer.off()
         self.SAKS.ledrow.off_for_index(6)
 
-    def getWeatherData(self):
-        weather_url = 'https://free-api.heweather.com/x3/weather?cityid=CN101010400&key=e2dfc339a09c4e09b1e389e9578af294'
-        req = urllib2.Request(weather_url)
-        resp = urllib2.urlopen(req)
-        content = resp.read()
-        if content:
-            weatherJSON = json.JSONDecoder().decode(content)
-            print(content)
-            try:
-                if weatherJSON['HeWeather data service 3.0'][0]['status'] == "ok":
-                    res = weatherJSON['HeWeather data service 3.0'][0]
-                    pm10 = str(res['aqi']['city']['pm10'])  # 67
-                    pm25 = str(res['aqi']['city']['pm25'])  # 5
-                    qlty = res['aqi']['city']['qlty']  # 良
-                    suggestion = ''
-                    for key in ['air', 'comf', 'cw', 'drsg', 'flu', 'sport', 'trav', 'uv']:
-                        suggestion += res['suggestion'][key]['txt']
-                    return "空气指数%s,PM10 %s,PM2.5 %s,%s" % (qlty, pm10, pm25, suggestion)
-                else:
-                    return None
-            except Exception as e:
-                print e.message
-                return None
 
     def showLed(self, sec):
         global __ldp
