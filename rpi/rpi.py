@@ -3,13 +3,9 @@
 
 from sakshat import SAKSHAT
 import time
-import urllib2
-import json
 import pygame
 import os
 from concurrent.futures import ThreadPoolExecutor
-from tornado.gen import coroutine, Task
-from tornado.web import asynchronous
 from tornado.util import raise_exc_info
 
 
@@ -21,7 +17,7 @@ class RasPi():
     __dp = True
     __alarm_beep_status = False
     __alarm_beep_times = 0
-    __alarm_time = "08:00:00"  # 在这里设定闹钟定时时间
+    __alarm_time = "07:30:00"  # 在这里设定闹钟定时时间
 
     tellTime = -1
 
