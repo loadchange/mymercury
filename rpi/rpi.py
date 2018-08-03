@@ -17,7 +17,7 @@ class RasPi():
     __dp = True
     __alarm_beep_status = False
     __alarm_beep_times = 0
-    __alarm_time = "07:30:00"  # 在这里设定闹钟定时时间
+    __alarm_time = "08:30:00"  # 在这里设定闹钟定时时间
 
     tellTime = -1
 
