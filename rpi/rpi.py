@@ -80,7 +80,7 @@ class RasPi():
         hour = time.get('hour')
         min = time.get('min')
         sec = time.get('sec')
-        if 21 >= hour >= 7 and min == 0 and self.tellTime != hour:
+        if 22 >= hour >= 8 and min == 0 and self.tellTime != hour:
             self.playTellTime(hour)
         if self.tellTime == hour and min == 0 and sec >= 4:
             pygame.mixer.quit()
