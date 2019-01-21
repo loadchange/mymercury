@@ -1,5 +1,6 @@
 # 我的玩具 树莓派
 
+> supervisorctl
 
 ## 安装
 
